@@ -44,13 +44,13 @@ def update():
 
         admin = request.form['admin']
         architect = request.form['architect']
-        operation = request.form['operation']
+        operations = request.form['operations']
         # Update User Records
         mycursor.execute(
             "UPDATE user_details SET name=%s,email=%s,type=%s WHERE id=%s", (name, email, user, id))
         dbs.commit()
         mycursor.execute(
-            "UPDATE page_access SET admin=%s,architect=%s,operations=%s WHERE uid=%s", (admin, architect, operation, id))
+            "UPDATE page_access SET admin=%s,architect=%s,operations=%s WHERE uid=%s", (admin, architect, operations, id))
         dbs.commit()
         print("update success")
         return redirect(url_for("users"))
