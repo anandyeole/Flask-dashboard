@@ -54,11 +54,13 @@
         <h6 class="collapse-header">User Pages:</h6>
         {% if current_user.type=="admin" or pages["admin"] == 1: %}
         <a class="collapse-item" href="{{ url_for('users') }}">All Users</a>
-        {% endif %} {% if pages["architect"] == 1 or pages["admin"] == 1 :%}
+        {% endif %} {% if pages["architect"] == 1 or current_user.type=="admin"
+        :%}
         <a class="collapse-item" href="{{ url_for('architect.userarchitect') }}"
           >Architect</a
         >
-        {% endif %} {% if pages["operations"]==1 or pages["admin"] == 1 :%}
+        {% endif %} {% if pages["operations"]==1 or current_user.type=="admin"
+        :%}
         <a class="collapse-item" href="{{ url_for('users') }}"
           >Opeartion Page</a
         >

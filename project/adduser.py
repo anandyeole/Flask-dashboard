@@ -1,5 +1,6 @@
 # importing packages
 from os import access, name
+from project.auth import is_admin
 from project import userDetails, bcrypt
 from flask import Blueprint, render_template, url_for, redirect, request, flash
 from wtforms import StringField, PasswordField, SubmitField, ValidationError
@@ -20,6 +21,7 @@ addusers = Blueprint("addusers", __name__, template_folder='templates')
 
 @addusers.route("/adduser", methods=["GET", "POST"])
 @login_required
+@is_admin
 def adduser():
     msg = ''
 
